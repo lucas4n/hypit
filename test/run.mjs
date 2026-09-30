@@ -9,6 +9,7 @@ const patterns = [
   "test/**/*.test.ts",
   // Project-package behavior is part of ordinary authoring and belongs in the suite.
   "examples/*/packages/*/test/**/*.test.ts",
+  "machinement/packages/*/test/**/*.test.ts",
 ];
 
 /** `node --test` exits successfully for an empty file list, so require an actual suite. */
