@@ -11,26 +11,21 @@ para clientes. **Não** pode virar SaaS multi-inquilino nem ser revendido. A sa�
 
 | Pacote | Atende | Paga com | Login |
 |---|---|---|---|
-| `@machinement/provider-magnific` | `gpt-image-2`, `nano-banana-2`, `nano-banana-pro`, `seedance-2`, `-fast`, `-mini` | créditos do plano Magnific | OAuth do dashboard (`credentials/magnific-mcp.json` do socialmedia) |
-| `@machinement/provider-fal` | `seedance-2`, `seedance-2-fast` | saldo da fal | `FAL_KEY` no ambiente |
+| `@machinement/provider-magnific` | **só imagem**: `gpt-image-2`, `nano-banana-2`, `nano-banana-pro` | créditos do plano Magnific | OAuth do dashboard (`credentials/magnific-mcp.json` do socialmedia) |
+| `@machinement/provider-fal` | **vídeo**: `seedance-2`, `seedance-2-fast` | saldo da fal | `FAL_KEY` no ambiente |
 
-O Magnific é o padrão. A fal é a rota alternativa do Seedance: trocar é mudar uma linha em
-`bindings` no perfil.
+**Por que vídeo não passa pelo Magnific** (decisão de 2026-09-30): um take de 5 s em 720p
+custa 1.400 créditos no Seedance 2.0 (1.175 no Fast), de um plano de 45 mil por mês que os
+canais usam para imagem. Na fal, o mesmo take custa ~US$ 1,51 (~US$ 1,21 no Fast), pago por
+uso e sem disputar essa bolsa. Além disso, o Magnific avisa que no Seedance dele a referência
+de áudio "não clona voz nem faz lip-sync", e o Hypit depende disso para a voz do apresentador.
+O provedor do Magnific **não oferece** Seedance. Não basta tirar do perfil: um Model com uma
+única oferta seria escolhido sem aviso, e o `seedance-2-mini` (que a fal não tem) gastaria
+crédito calado. Por isso `model="mini"` não roda: o `plan` recusa.
 
 Mapeamentos que parecem errados, mas estão certos:
 - **Nano Banana 2** é o slug `imagen-nano-banana-2-flash`, e **Nano Banana Pro** é `imagen-nano-banana-2`.
 - O modelo `gpt-2` do Magnific é o GPT Image 2.
-
-## ⚠ A testar antes de confiar: voz no Seedance
-
-O Hypit faz o apresentador falar com a voz de uma amostra: ele passa o áudio como referência
-para o Seedance. O catálogo do Magnific afirma que, no Seedance dele, a referência de áudio
-"guia ritmo e personagem, **não clona voz nem faz lip-sync**". A fal serve o mesmo modelo da
-ByteDance e não faz essa ressalva.
-
-O primeiro take pago deve responder a isso: gerar a mesma cena pelas duas rotas e comparar a
-voz. Se o Magnific não mantiver a voz, os takes com fala vão pela fal e o resto continua no
-Magnific.
 
 ## Usar num projeto
 

@@ -18,8 +18,7 @@
     "@hypit/gpt-image@1#gpt-image-2": "magnific",
     "@hypit/nano-banana@1#nano-banana-2": "magnific",
     "@hypit/nano-banana@1#nano-banana-pro": "magnific",
-    "@hypit/seedance@1#seedance-2": "magnific",
-    "@hypit/seedance@1#seedance-2-fast": "magnific",
-    "@hypit/seedance@1#seedance-2-mini": "magnific"
+    "@hypit/seedance@1#seedance-2": "fal",
+    "@hypit/seedance@1#seedance-2-fast": "fal"
   }
 }
