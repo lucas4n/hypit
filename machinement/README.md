@@ -14,11 +14,13 @@ para clientes. **Não** pode virar SaaS multi-inquilino nem ser revendido. A sa�
 | `@machinement/provider-magnific` | **só imagem**: `gpt-image-2`, `nano-banana-2`, `nano-banana-pro` | créditos do plano Magnific | OAuth do dashboard (`credentials/magnific-mcp.json` do socialmedia) |
 | `@machinement/provider-fal` | **vídeo**: `seedance-2`, `seedance-2-fast` | saldo da fal | `FAL_KEY` no ambiente |
 
-**Por que vídeo não passa pelo Magnific** (decisão de 2026-09-30): um take de 5 s em 720p
-custa 1.400 créditos no Seedance 2.0 (1.175 no Fast), de um plano de 45 mil por mês que os
-canais usam para imagem. Na fal, o mesmo take custa ~US$ 1,51 (~US$ 1,21 no Fast), pago por
-uso e sem disputar essa bolsa. Além disso, o Magnific avisa que no Seedance dele a referência
-de áudio "não clona voz nem faz lip-sync", e o Hypit depende disso para a voz do apresentador.
+**Por que vídeo não passa pelo Magnific** (decisão provisória de 2026-09-30): um take de 5 s em
+720p custa 1.400 créditos no Seedance 2.0 (1.175 no Fast), ~3% dos 45 mil créditos por mês que os
+canais usam para imagem. Por take, o Magnific é **mais barato** (≈ R$ 5,60 contra ≈ R$ 8,30 na
+fal, no Premium+ a R$ 180). A fal ganha por não disputar a bolsa dos canais. Falta testar se a voz
+da amostra se mantém em cada rota: a doc do Magnific diz que a referência de áudio "não clona
+voz", mas isso nunca foi medido. Se o Magnific mantiver a voz, `git revert 2b6f2b13` devolve o
+Seedance para ele.
 O provedor do Magnific **não oferece** Seedance. Não basta tirar do perfil: um Model com uma
 única oferta seria escolhido sem aviso, e o `seedance-2-mini` (que a fal não tem) gastaria
 crédito calado. Por isso `model="mini"` não roda: o `plan` recusa.
